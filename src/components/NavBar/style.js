@@ -6,7 +6,8 @@ export const Header = styled.header`
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0px 50px;
+  justify-content: space-between;
+  padding: 0px 25px;
 
   .menu {
     display: flex;

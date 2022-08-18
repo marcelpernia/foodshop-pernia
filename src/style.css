@@ -1,6 +1,8 @@
 :root {
     --primary: #D74F40;
     --secondary: #E4923D;
+    --graySoft: #f3f5f6;
+    --graySoftHover: #eaeced;
     --text: #464646;
 }
 
@@ -13,6 +15,7 @@
 
 body {
     font-family: helvetica;
+    color: var(--text);
 }
 
 html, body, #root {
