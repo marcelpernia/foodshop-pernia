@@ -8,7 +8,7 @@ function App() {
       <NavBar />
       <ItemListContainer 
         className="item-list-container" 
-        greeting="Saludos coderhouses"
+        greeting="Click para agregar al carrito"
       />
     </>
   );
