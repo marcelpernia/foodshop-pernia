@@ -1,15 +1,15 @@
 import './style.css';
 import NavBar from './components/NavBar/';
-import ItemListContainer from './components/ItemListContainer';
+import Main from './components/Main';
+import ItemList from './components/ItemList';
 
 function App() {
   return (
     <>
       <NavBar />
-      <ItemListContainer 
-        className="item-list-container" 
-        greeting="Click para agregar al carrito"
-      />
+      <Main>
+        <ItemList />
+      </Main>
     </>
   );
 }

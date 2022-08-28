@@ -8,9 +8,14 @@ export const Count = styled.div`
   margin: auto;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
   span {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 100%;
     font-weight: 600;
     font-size: 16px;
     color: white;

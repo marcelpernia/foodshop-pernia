@@ -3,7 +3,7 @@ import { PlusCircleIcon, MinusCircleIcon, TrashIcon} from '@heroicons/react/outl
 import { AddToCart, Count } from './style'
 
 
-export const ItemCount = ({ stock, initial }) => {
+export const AddToCartButton = ({ stock, initial }) => {
 
     const [ counter, setCounter ] = useState(Number(initial))
 
@@ -28,7 +28,7 @@ export const ItemCount = ({ stock, initial }) => {
                             <MinusCircleIcon className="icon"/>
                         )}
                     </button>
-                    <span>{counter}</span>
+                    <span onClick={() => onAdd('+') }>{counter}</span>
                     <button onClick={() => onAdd('+') }>
                         <PlusCircleIcon className="icon"/>
                     </button>
