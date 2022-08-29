@@ -37,7 +37,10 @@ export const Count = styled.div`
         width: 30px;
     }
     &:hover {
-        background-color: rgba(0,0,0,.1);
+      background-color: rgba(0,0,0,.1);
+    }
+    &:active {
+      background-color: transparent;
     }
   }
 `;
