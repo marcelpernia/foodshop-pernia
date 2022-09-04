@@ -3,24 +3,24 @@ import { PlusCircleIcon, MinusCircleIcon, TrashIcon} from '@heroicons/react/outl
 import { AddToCart, Count } from './style'
 
 
-export const AddToCartButton = ({ stock, initial }) => {
+export const AddToCartButton = ({ stock, initial, className }) => {
 
-    const [ counter, setCounter ] = useState(Number(initial))
+    const [ counter, setCounter ] = useState(initial)
 
     const onAdd = (operation) => {
-        operation === '+' && counter < Number(stock) && setCounter(counter + 1)
+        operation === '+' && counter < stock && setCounter(counter + 1)
         operation === '-' && setCounter(counter - 1)
     }
 
     return (
         <>
             {counter == 0 ? (
-                <AddToCart onClick={() => onAdd('+') }>
+                <AddToCart className={className} onClick={() => onAdd('+') }>
                     <span>Add to Cart</span>
                     <PlusCircleIcon className="icon"/>
                 </AddToCart>
             ) : (
-                <Count>
+                <Count className={className}>
                     <button onClick={() => onAdd('-') }>
                         {counter == 1 ? (
                             <TrashIcon className="icon"/>

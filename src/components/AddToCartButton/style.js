@@ -67,4 +67,7 @@ export const AddToCart = styled.button`
         right: 5px;
         top: 5px;
     }
+    &:hover {
+      box-shadow: inset 0 -60px 0 rgba(0,0,0,.1);
+    }
 `;
