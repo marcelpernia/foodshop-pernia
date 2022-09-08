@@ -13,14 +13,14 @@ export const Header = styled.header`
     display: flex;
     gap: 30px;
     a {
-        color: #464646;
-        text-decoration: none;
-        font-size: 14px;
-        text-transform: uppercase;
-        transition: all 200ms linear;
-        &:hover {
-            color: var(--primary);
-        }
+      color: #464646;
+      text-decoration: none;
+      font-size: 14px;
+      text-transform: uppercase;
+      transition: all 200ms linear;
+      &:hover, &.active {
+        color: var(--primary);
+      }
     }
   }
 

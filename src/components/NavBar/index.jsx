@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { Header } from './style'
 import CartWidget from '../CartWidget'
 
@@ -7,9 +7,9 @@ function NavBar() {
     return (
         <Header>
             <div className="menu">
-                <a href="">Grocery</a>
-                <a href="">Alcohol</a>
-                <a href="">Snacks</a>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/category/1">Grocery</NavLink>
+                <NavLink to="/category/2">Alcohol</NavLink>
             </div>
 
             <Link to='/'>

@@ -12,6 +12,7 @@ function App() {
       <Main>
         <Routes>
           <Route path='/' element={<ItemList />}></Route>
+          <Route path='/category/:id' element={<ItemList />}></Route>
           <Route path='/product/:id' element={<ItemDetail />}></Route>
         </Routes>
       </Main>
