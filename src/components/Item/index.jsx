@@ -1,12 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ProductItem, Image, Title, Price, Stock } from './style'
 import {AddToCartButton} from '../AddToCartButton';
 
-const Item = ({title, price, image, stock}) => {
+const Item = ({id, title, price, image, stock}) => {
     return (
         <ProductItem>
             <Image>
-                <img src={image} alt={title} />
+                <Link to={`product/${id}`}>
+                    <img src={image} alt={title} />
+                </Link>
             </Image>
             <Title>{title}</Title>
             <Stock>{stock} in stock</Stock>

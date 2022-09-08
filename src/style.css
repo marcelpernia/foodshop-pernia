@@ -31,3 +31,10 @@ html, body, #root {
     margin: auto;
     max-width: 1600px;
 }
+
+.loading {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}

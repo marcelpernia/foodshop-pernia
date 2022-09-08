@@ -1,42 +1,45 @@
 import React, {useState, useEffect} from 'react'
-import Item from '../Item'
-import { Container, Image, Title, AddToCart, Price, Description } from './style'
-import {AddToCartButton} from '../AddToCartButton'
+import { useParams, Link } from 'react-router-dom'
+import { Container } from './style'
+import { Back } from './Back'
+import { Product } from './Product'
+import { Loading } from '../Loading'
 
 const ItemDetails = () => {
 
-    const [product, setProduct] = useState(null)
+    const [item, setItem] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
+    const {id} = useParams()
 
     useEffect(() => {
         const getItem = async () => {
-            const response = await fetch('./data.json')
+            const response = await fetch('http://localhost:3000/products.json')
             const data = await response.json()
-            const item = data.filter(item => item.id == 1)
-            setProduct(...item)
+            const item = data.filter(item => item.id == id)
+            
+            setTimeout(() => {
+                setItem(...item)
+                setIsLoading(false)
+            }, 500)
         }
         getItem()
     }, [])
 
     return (
         <Container>
-            <Image>
-                <img src={product.image.large} alt={product.title} />
-            </Image>
-            <Title>{product.title}</Title>
-            <AddToCart>
-                <Price>
-                    {product.price}
-                </Price>
-                <AddToCartButton 
-                    initial={0}
-                    stock={product.stock}
-                    className="add-to-cart-btn"
-                />
-            </AddToCart>
-            <Description>
-                <h3>Description</h3>
-                <p>{product.description}</p>
-            </Description>
+            {isLoading && <Loading />}
+            {item && (
+                <>
+                    <Back />
+                    <Product 
+                        image={item.image}
+                        title={item.title}
+                        price={item.price}
+                        stock={item.stock}
+                        details={item.details}
+                    />
+                </>    
+            )}
         </Container>
     );
 }

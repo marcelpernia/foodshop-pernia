@@ -1,17 +1,20 @@
-import React from 'react';
-import { Header } from './style';
-import CartWidget from '../CartWidget';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Header } from './style'
+import CartWidget from '../CartWidget'
 
 function NavBar() {
     return (
         <Header>
             <div className="menu">
-                <a href="">Víveres</a>
-                <a href="">Carnes</a>
-                <a href="">Hortalizas</a>
+                <a href="">Grocery</a>
+                <a href="">Alcohol</a>
+                <a href="">Snacks</a>
             </div>
 
-            <img src="/img/logotipo.png" alt="Logo" className="logo"/>
+            <Link to='/'>
+                <img src="/img/logotipo.png" alt="Logo" className="logo"/>
+            </Link>
 
             <CartWidget />
         </Header>

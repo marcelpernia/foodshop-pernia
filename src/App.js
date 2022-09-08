@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './style.css';
 import NavBar from './components/NavBar/';
 import Main from './components/Main';
@@ -9,8 +10,10 @@ function App() {
     <>
       <NavBar />
       <Main>
-        {/* <ItemList /> */}
-        <ItemDetail />
+        <Routes>
+          <Route path='/' element={<ItemList />}></Route>
+          <Route path='/product/:id' element={<ItemDetail />}></Route>
+        </Routes>
       </Main>
     </>
   );

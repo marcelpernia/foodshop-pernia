@@ -16,6 +16,7 @@ export const Image = styled.figure`
 export const Title = styled.h3`
   font-weight: bold;
   font-size: 18px;
+  margin-top: 20px;
 `;
 
 export const Stock = styled.div`

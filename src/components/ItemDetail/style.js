@@ -6,6 +6,22 @@ export const Container = styled.div`
   text-align: center;
 `;
 
+export const BackBtn = styled.div`
+  text-decoration: none;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: gray;
+  .icon {
+    width: 24px;
+    margin-top: -2px;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export const Image = styled.figure`
   img {
     display: block;
@@ -22,7 +38,7 @@ export const Title = styled.h1`
 
 export const AddToCart = styled.div`
   margin-top: 30px;
-  border-radius: 40px;
+  border-radius: 50px;
   padding: 20px;
   box-shadow: 0px 0px 31px 0px rgba(0, 0, 0, 0.08);
   display: flex;
@@ -32,6 +48,8 @@ export const AddToCart = styled.div`
     margin: initial;
     height: 50px;
     border-radius: 25px;
+    width: 50%;
+    padding-right: 0;
     button {
       height: 50px;
       width: 50px;
@@ -47,7 +65,7 @@ export const AddToCart = styled.div`
   }
 `;
 
-export const Description = styled.div`
+export const Details = styled.div`
   margin-top: 50px;
   padding-bottom: 50px;
   border-bottom: solid 1px #e3e3e3;
@@ -57,6 +75,7 @@ export const Description = styled.div`
   p {
     margin-top: 10px;
     font-size: 16px;
+    line-height: 24px;
   }
 `;
 
