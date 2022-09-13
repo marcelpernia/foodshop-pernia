@@ -44,11 +44,12 @@ export const AddToCart = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   .add-to-cart-btn {
     margin: initial;
     height: 50px;
     border-radius: 25px;
-    width: 50%;
+    width: 220px;
     padding-right: 0;
     button {
       height: 50px;
@@ -81,4 +82,11 @@ export const Details = styled.div`
 
 export const Price = styled.div`
   font-size: 20px;
+`;
+
+export const SeeCartLink = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 260px;
 `;
