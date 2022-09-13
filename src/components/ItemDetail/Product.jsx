@@ -4,7 +4,7 @@ import { AddToCartButton } from '../AddToCartButton'
 import { Image, Title, AddToCart, Price, Details, SeeCartLink } from './style'
 
 export const Product = ({image, title, price, stock, details}) => {
-    const [qty, setQty] = useState(1)
+    const [qty, setQty] = useState(0)
 
     const handleQty = (value) => {
         setQty(value)
