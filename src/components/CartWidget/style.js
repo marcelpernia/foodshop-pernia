@@ -1,6 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CartIcon = styled.div`
+  a {
+    color: var(--text);
+    text-decoration: none;
     display: flex;
     align-items: center;
     background-color: var(--graySoft);
@@ -9,15 +12,17 @@ export const CartIcon = styled.div`
     border-radius: 30px;
     cursor: pointer;
     &:hover {
-        background-color: var(--graySoftHover);
+      background-color: var(--graySoftHover);
     }
-  .icon {
-    width: 24px;
-    flex: none;
-    margin-right: 5px;
-  }
-  .counter {
-    font-size: 16px;
-    font-weight: 500;
+    .icon {
+      width: 24px;
+      flex: none;
+      margin-right: 5px;
+    }
+    .counter {
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+    }
   }
 `;

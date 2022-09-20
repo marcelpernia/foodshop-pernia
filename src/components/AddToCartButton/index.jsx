@@ -1,22 +1,27 @@
 import React, { useState } from 'react'
 import { PlusCircleIcon, MinusCircleIcon, TrashIcon} from '@heroicons/react/outline'
 import { AddToCart, Count } from './style'
+import { useCartContext } from '../../context/CartContext'
 
 
-export const AddToCartButton = ({ stock, className, handleQty }) => {
+export const AddToCartButton = ({ stock, className, handleQty, product }) => {
+
+    const { items, addItem, removeItem } = useCartContext()
 
     const [ counter, setCounter ] = useState(0)
 
     const onAdd = () => {
         if (counter < stock) {
             setCounter(counter + 1)
-            handleQty(counter + 1)
+            handleQty && handleQty(counter + 1)
+            addItem({...product, qty:counter + 1})
         }
     }
 
     const onMinus = () => {
         setCounter(counter - 1)
-        handleQty(counter - 1)
+        handleQty && handleQty(counter - 1)
+        removeItem({...product, qty:counter - 1})
     }
 
     return (

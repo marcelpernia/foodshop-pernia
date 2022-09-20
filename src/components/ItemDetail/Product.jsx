@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { AddToCartButton } from '../AddToCartButton'
 import { Image, Title, AddToCart, Price, Details, SeeCartLink } from './style'
 
-export const Product = ({image, title, price, stock, details}) => {
+export const Product = ({id, image, title, price, stock, details}) => {
     const [qty, setQty] = useState(0)
 
     const handleQty = (value) => {
@@ -28,6 +28,7 @@ export const Product = ({image, title, price, stock, details}) => {
                     stock={stock}
                     className="add-to-cart-btn"
                     handleQty={handleQty}
+                    product={{id, title, image}}
                 />
             </AddToCart>
             <Details>

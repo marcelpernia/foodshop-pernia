@@ -31,7 +31,8 @@ const ItemDetails = () => {
             {item && (
                 <>
                     <Back />
-                    <Product 
+                    <Product
+                        id={id} 
                         image={item.image}
                         title={item.title}
                         price={item.price}
