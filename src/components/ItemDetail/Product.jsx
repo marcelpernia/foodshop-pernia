@@ -17,7 +17,7 @@ export const Product = ({id, image, title, price, stock, details}) => {
             <Title>{title}</Title>
             <AddToCart>
                 <Price>
-                    {price}
+                    ${price}
                 </Price>
                 {qty > 0 && (
                     <SeeCartLink>
@@ -28,7 +28,7 @@ export const Product = ({id, image, title, price, stock, details}) => {
                     stock={stock}
                     className="add-to-cart-btn"
                     handleQty={handleQty}
-                    product={{id, title, image}}
+                    product={{id, title, image, price}}
                 />
             </AddToCart>
             <Details>

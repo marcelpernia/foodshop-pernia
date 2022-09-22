@@ -14,7 +14,7 @@ const Item = ({id, title, price, image, stock}) => {
             </Image>
             <Title>{title}</Title>
             <Stock>{stock} in stock</Stock>
-            <Price>{price}</Price>
+            <Price>${price}</Price>
             <AddToCartButton 
                 stock={stock}
                 initial={0}

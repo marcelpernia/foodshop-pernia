@@ -5,7 +5,7 @@
        "category":1,
        "stock":20,
        "details":"Beautiful organic lemons to brighten your day!",
-       "price":"$1.20 each",
+       "price":1.20,
        "image":"/img/lemon.jpg"
     },
     {
@@ -14,7 +14,7 @@
        "category":1,
        "stock":8,
        "details":"Apples contain antioxidants, vitamins, dietary fiber, and a range of other nutrient",
-       "price":"$0.71 each",
+       "price":0.71,
        "image":"/img/apple.jpg"
     },
     {
@@ -23,7 +23,7 @@
        "category":2,
        "stock":4,
        "details":"The best-selling 100% agave premium tequila, 1800® Blanco follows the original formula created in the year 1800.",
-       "price":"$22.99",
+       "price":22.99,
        "image":"/img/1800-tequila.webp"
     },
     {
@@ -32,7 +32,7 @@
        "category":2,
        "stock":4,
        "details":"Quality & craftsmanship since 1866. Mellowed for smoothness drop by drop through sugar maple charcoal.",
-       "price":"$39.99",
+       "price":39.99,
        "image":"/img/jack-daniels.png"
     },
     {
@@ -41,7 +41,7 @@
        "category":2,
        "stock":4,
        "details":"Sip on a slice of summer with Malibu’s newest flavor, Malibu Watermelon! The sunniest spirit for impromptu outdoor hangs and perfect partner for flavorful cocktails.",
-       "price":"$16.99",
+       "price":16.99,
        "image":"/img/malibu.webp"
     },
     {
@@ -50,7 +50,7 @@
       "category":1,
       "stock":10,
       "details":"Best Foods Gluten-Free Real Mayonnaise is proudly made with real, simple ingredients like cage-free eggs, oil, and vinegar. ",
-      "price":"$8.79",
+      "price":8.79,
       "image":"/img/mayo.webp"
    },
    {
@@ -59,7 +59,7 @@
       "category":1,
       "stock":10,
       "details":"Crafted by master grinders, French’s® Classic Yellow Mustard is America’s best-loved mustard. ",
-      "price":"$3.29",
+      "price":3.29,
       "image":"/img/mustard.webp"
    },
    {
@@ -68,7 +68,7 @@
       "category":1,
       "stock":10,
       "details":"Heinz Organic Tomato Ketchup is made with vine-ripened certified organic tomatoes. It features the same thick and rich taste as the classic Heinz ketchup you know and love. ",
-      "price":"$3.29",
+      "price":3.29,
       "image":"/img/ketchup.webp"
    }
  ]

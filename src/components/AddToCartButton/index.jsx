@@ -6,7 +6,7 @@ import { useCartContext } from '../../context/CartContext'
 
 export const AddToCartButton = ({ stock, className, handleQty, product }) => {
 
-    const { items, addItem, removeItem } = useCartContext()
+    const { items, increment, decrement } = useCartContext()
 
     const [ counter, setCounter ] = useState(0)
 
@@ -14,14 +14,14 @@ export const AddToCartButton = ({ stock, className, handleQty, product }) => {
         if (counter < stock) {
             setCounter(counter + 1)
             handleQty && handleQty(counter + 1)
-            addItem({...product, qty:counter + 1})
+            increment({...product, qty:counter + 1})
         }
     }
 
     const onMinus = () => {
         setCounter(counter - 1)
         handleQty && handleQty(counter - 1)
-        removeItem({...product, qty:counter - 1})
+        decrement({...product, qty:counter - 1})
     }
 
     return (
