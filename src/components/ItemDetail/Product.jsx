@@ -21,7 +21,7 @@ export const Product = ({id, image, title, price, stock, details}) => {
                 </Price>
                 {qty > 0 && (
                     <SeeCartLink>
-                        <Link to="/cart">See Cart</Link>
+                        <Link to="/cart" className="link">See Cart</Link>
                     </SeeCartLink>
                 )}
                 <AddToCartButton 

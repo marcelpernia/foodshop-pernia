@@ -1,55 +1,91 @@
 import React from 'react';
 import { useCartContext } from '../../context/CartContext';
 import EmptyCart from './EmptyCart';
-import { Wrapper, Table } from './style';
+import { Table, Container, Columns, Summary } from './style';
 import { Link } from 'react-router-dom'
 import { TrashIcon } from '@heroicons/react/outline';
 
 const Cart = () => {
     const {items, deleteItem} = useCartContext()
-    const total = items.reduce((acc, current) => (acc + current.price * current.qty), 0)
+    const totalCalculated = () => {
+        const total = items.reduce((acc, current) => (acc + current.price * current.qty), 0)
+        return total.toFixed(2)
+    }
 
     return (
-        <Wrapper>
-            <h1 className="section-title">Shopping Cart</h1>
+        <Container>
+            <h1 className="section-title">Your Cart</h1>
 
             {items.length > 0 ? (
-                <Table>
-                    <tr>
-                        <th></th>
-                        <th>Product name</th>
-                        <th>Qty</th>
-                        <th>Unit Price</th>
-                        <th>Sub-total</th>
-                        <th></th>
-                    </tr>
-                    {items.map(({id,image, title, qty, price}) => (
-                        <tr>
-                            <td className="image">
-                            <Link to={`/product/${id}`}>
-                                <img src={image} alt={title} />
-                            </Link>
-                            </td>
-                            <td>{title}</td>
-                            <td>{qty}</td>
-                            <td>${price}</td>
-                            <td>${price*qty}</td>
-                            <td>
-                                <TrashIcon 
-                                onClick={() => deleteItem(id)} 
-                                className="delete"/>
-                            </td>
-                        </tr>
-                    ))}
-                    <tr>
-                        <th colspan="4" className="right">Total</th>
-                        <th colspan="2" className="left">${total.toFixed(2)}</th>
-                    </tr>
-                </Table>
+                    <Columns>
+                        <div className="column">
+                            <Table>
+                                <thead>
+                                    <tr>
+                                        <th colSpan="2" className="left">Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {items.map(({id,image, title, qty, price}) => (
+                                        <tr key={id}>
+                                            <td className="image">
+                                            <Link to={`/product/${id}`}>
+                                                <img src={image} alt={title} />
+                                            </Link>
+                                            </td>
+                                            <td className="left">{title}</td>
+                                            <td>{'$'}{price}</td>
+                                            <td>{qty}</td>
+                                            <td>{'$'}{price*qty}</td>
+                                            <td className="min-w">
+                                                <TrashIcon 
+                                                onClick={() => deleteItem(id)} 
+                                                className="delete"/>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
+                            
+                            <div className="right mt-2">
+                                <button className="link">Clear cart</button>
+                            </div>
+                        </div>
+                        <div className="column narrow">
+                            <Summary>
+                                <h3>Order summary</h3>
+
+                                <Table>
+                                    <tbody>
+                                        <tr>
+                                            <th className="left">Items</th>
+                                            <td className="right">{items.length}</td>
+                                        </tr>
+                                        <tr>
+                                            <th className="left">Subtotal</th>
+                                            <td className="right">{'$'}{totalCalculated()}</td>
+                                        </tr>
+                                        <tr>
+                                            <th className="left">Shipping</th>
+                                            <td className="right">Free</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+
+                                <h3 className="mt-2">Total</h3>
+                                <div className="total">{'$'}{totalCalculated()}</div>
+                            </Summary>
+                            <button className="button mt-1 fullWidth">Go to checkout</button>
+                        </div>
+                    </Columns>
                 ) : (
                   <EmptyCart />
                 )}
-        </Wrapper>
+        </Container>
     );
 }
 
