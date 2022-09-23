@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Container } from './style'
 import { Back } from './Back'
 import { Product } from './Product'
@@ -23,7 +23,7 @@ const ItemDetails = () => {
             }, 500)
         }
         getItem()
-    }, [])
+    }, [id])
 
     return (
         <Container>
