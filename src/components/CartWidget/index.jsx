@@ -8,7 +8,7 @@ const CartWidget = () => {
     const {items} = useCartContext()
     const length = items.filter(item => item.qty > 0).length
     return (
-        <CartIcon>
+        <CartIcon hasItems={length}>
             <Link to="/cart">
                 <ShoppingCartIcon className="icon"/>
                 <div className="counter">{length}</div>

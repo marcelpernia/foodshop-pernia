@@ -8,7 +8,7 @@ const CartProvider = ({children}) => {
 
     
     const increment = (product) => {
-        const itemFound = items.find(item => item.id == product.id)
+        const itemFound = items.find(item => item.id === product.id)
 
         if(itemFound) {
             itemFound.qty++
@@ -19,18 +19,22 @@ const CartProvider = ({children}) => {
     }
    
     const decrement = (product) => {
-        const itemFound = items.find(item => item.id == product.id)
+        const itemFound = items.find(item => item.id === product.id)
         itemFound.qty--
         setItems([...items])
     }
 
     const deleteItem = (id) => {
-        const query = items.filter(item => item.id != id)
+        const query = items.filter(item => item.id !== id)
         setItems(query)
     }
 
+    const clearCart = () => {
+        setItems([])
+    }
+
     return (
-        <CartContext.Provider value={{items, increment, decrement, deleteItem}}>
+        <CartContext.Provider value={{items, increment, decrement, deleteItem, clearCart}}>
             {children}
         </CartContext.Provider>
     )

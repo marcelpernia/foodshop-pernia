@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { TrashIcon } from '@heroicons/react/outline';
 
 const Cart = () => {
-    const {items, deleteItem} = useCartContext()
+    const {items, deleteItem, clearCart} = useCartContext()
     const totalCalculated = () => {
         const total = items.reduce((acc, current) => (acc + current.price * current.qty), 0)
         return total.toFixed(2)
@@ -52,7 +52,7 @@ const Cart = () => {
                             </Table>
                             
                             <div className="right mt-2">
-                                <button className="link">Clear cart</button>
+                                <button className="link" onClick={clearCart}>Clear cart</button>
                             </div>
                         </div>
                         <div className="column narrow">

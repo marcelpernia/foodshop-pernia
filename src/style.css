@@ -4,6 +4,7 @@
     --graySoft: #f3f5f6;
     --graySoftHover: #eaeced;
     --text: #464646;
+    --success: #28a745;
 }
 
 
@@ -54,13 +55,16 @@ html, body, #root {
     font-size: 16px;
     color: white;
 }
+.button:hover {
+  box-shadow: inset 0 -60px 0 rgba(0,0,0,.1);
+}
+.button:active {
+    box-shadow: none;
+}
 .button.fullWidth {
     width: 100%;
 }
 
-.button:hover {
-  box-shadow: inset 0 -60px 0 rgba(0,0,0,.1);
-}
 
 .buttons {
     display: flex;
@@ -103,6 +107,7 @@ html, body, #root {
 }
 .link:hover {
     border-bottom-style: solid;
+    color: var(--primary);
 }
 
 .right {

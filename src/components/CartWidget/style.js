@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+
+const hasItemsMixin = css`
+  background-color: var(--success);
+  &:hover {
+    background-color: #218838;
+  }
+  &:active {
+    background-color: var(--success);
+  }
+  color: white;
+`;
 
 export const CartIcon = styled.div`
   a {
@@ -24,5 +35,6 @@ export const CartIcon = styled.div`
       font-weight: 500;
       text-decoration: none;
     }
+    ${(props) => props.hasItems && hasItemsMixin};
   }
 `;

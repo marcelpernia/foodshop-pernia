@@ -68,8 +68,11 @@ export const Table = styled.table`
       }
       .delete {
         width: 30px;
-        color: crimson;
         cursor: pointer;
+        color: gray;
+        &:hover {
+          color: crimson;
+        }
       }
     }
     td {
