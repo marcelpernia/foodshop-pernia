@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import Item from '../Item'
 import { ItemGrid } from './style'
 import { Loading } from '../Loading'
+import { collection, getDocs } from "firebase/firestore";
+import { db } from '../../firebase'
 
 const ItemList = () => {
     const [products, setProducts] = useState(null)
@@ -13,17 +15,23 @@ const ItemList = () => {
     useEffect(() => {
         setIsLoading(true)
         const getProducts = async () => {
-            const response = await fetch('http://localhost:3000/products.json')
-            const data = await response.json()
-            const productsFiltered = () => {
-                return id == undefined ? data : data.filter((item) => item.category == id) 
+            try {
+                const querySnapshot = await getDocs(collection(db, 'products'));
+                const data = querySnapshot.docs.map(doc => doc = {id: doc.id, ...doc.data()})
+                const productsFiltered = () => {
+                    return id == undefined ? data : data.filter((item) => item.category == id) 
+                }
+                setProducts(productsFiltered)
             }
-            setTimeout(() => {
-                setProducts(productsFiltered())
+            catch (err) {
+                console.log(err)
+            }
+            finally {
                 setIsLoading(false)
-            }, 500)
+            }
         }
         getProducts()
+
     }, [id])
 
     return (
@@ -41,7 +49,7 @@ const ItemList = () => {
                     image={item.image}
                 />
             ))}
-            {products.length == 0 && `Sorry, we can't find any items that match ${id}`}
+            {!products.length && 'Sorry, no matches.'}
         </ItemGrid>
         )
     );
