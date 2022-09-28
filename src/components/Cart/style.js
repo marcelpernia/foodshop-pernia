@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-
-export const Container = styled.div`
-  width: 98%;
-  margin: auto;
-  max-width: 1200px;
-`;
-
 export const Columns = styled.div`
   display: flex;
   gap: 30px;
