@@ -6,6 +6,9 @@ import { useCartContext } from '../../context/CartContext';
 
 const ProductsTable = () => {
     const {items, deleteItem, clearCart} = useCartContext()
+    const priceFormat = (value) => {
+        return value.toFixed(2)
+    }
     return (
         <>
             <Table>
@@ -29,7 +32,7 @@ const ProductsTable = () => {
                             <td className="left">{title}</td>
                             <td>{'$'}{price}</td>
                             <td>{qty}</td>
-                            <td>{'$'}{price*qty}</td>
+                            <td>{'$'}{priceFormat(price*qty)}</td>
                             <td className="min-w">
                                 <TrashIcon 
                                 onClick={() => deleteItem(id)} 

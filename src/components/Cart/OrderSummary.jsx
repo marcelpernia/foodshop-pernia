@@ -4,12 +4,7 @@ import { useCartContext } from '../../context/CartContext';
 
 const OrderSummary = () => {
 
-    const { items } = useCartContext()
-    
-    const totalCalculated = () => {
-        const total = items.reduce((acc, current) => (acc + current.price * current.qty), 0)
-        return total.toFixed(2)
-    }
+    const { items, counter, total } = useCartContext()
 
     return (
         <Summary>
@@ -19,11 +14,11 @@ const OrderSummary = () => {
                 <tbody>
                     <tr>
                         <th className="left">Items</th>
-                        <td className="right">{items.length}</td>
+                        <td className="right">{counter}</td>
                     </tr>
                     <tr>
                         <th className="left">Subtotal</th>
-                        <td className="right">{'$'}{totalCalculated()}</td>
+                        <td className="right">{'$'}{total}</td>
                     </tr>
                     <tr>
                         <th className="left">Shipping</th>
@@ -33,7 +28,7 @@ const OrderSummary = () => {
             </Table>
 
             <h3 className="mt-2">Total</h3>
-            <div className="total">{'$'}{totalCalculated()}</div>
+            <div className="total">{'$'}{total}</div>
         </Summary>
     );
 }

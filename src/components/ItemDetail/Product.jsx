@@ -28,7 +28,7 @@ export const Product = ({id, image, title, price, stock, details}) => {
                     stock={stock}
                     className="add-to-cart-btn"
                     handleQty={handleQty}
-                    product={{id, title, image, price}}
+                    product={{id, title, image, price, stock}}
                 />
             </AddToCart>
             <Details>

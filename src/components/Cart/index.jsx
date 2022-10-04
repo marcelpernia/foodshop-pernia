@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCartContext } from '../../context/CartContext';
 import EmptyCart from './EmptyCart';
 import { Columns } from './style';
 import { Link } from 'react-router-dom'
 import OrderSummary from './OrderSummary';
 import ProductTable from './ProductTable'
+import Form from './Form';
 
 const Cart = () => {
     const { items } = useCartContext()
+    const [orderPlaced, setOrderPlaced] = useState(false)
+
+    const handleButton = () => {
+        setOrderPlaced(true)
+    }
 
     return (
         <div className="wrap">
@@ -20,7 +26,8 @@ const Cart = () => {
                     </div>
                     <div className="column narrow">
                         <OrderSummary />
-                        <button className="button mt-1 fullWidth">Go to checkout</button>
+                        { orderPlaced && <Form /> }
+                        {!orderPlaced && <button onClick={handleButton} className="button mt-1 fullWidth">Place order</button>}
                     </div>
                 </Columns>
             ) : (

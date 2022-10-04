@@ -28,8 +28,14 @@ export const AddToCartButton = ({ stock, className, handleQty, product }) => {
         <>
             {counter == 0 ? (
                 <AddToCart className={className} onClick={() => onAdd() }>
-                    <span>Add to Cart</span>
-                    <PlusCircleIcon className="icon"/>
+                    {product.stock !== 0 ? (
+                        <>
+                            <span>Add to Cart</span>
+                            <PlusCircleIcon className="icon"/>
+                        </>
+                    ) : (
+                        <span>Out of stock</span>
+                    )}
                 </AddToCart>
             ) : (
                 <Count className={className}>

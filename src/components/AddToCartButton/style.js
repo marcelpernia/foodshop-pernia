@@ -60,14 +60,16 @@ export const AddToCart = styled.button`
     font-size: 16px;
     color: white;
     position: relative;
-    padding-right: 25px;
     .icon {
-        width: 30px;
-        position: absolute;
-        right: 5px;
-        top: 5px;
+      width: 30px;
+      position: absolute;
+      right: 5px;
+      top: 5px;
     }
     &:hover {
       box-shadow: inset 0 -60px 0 rgba(0,0,0,.1);
+    }
+    span:not(:only-child) {
+      padding-right: 25px;
     }
 `;

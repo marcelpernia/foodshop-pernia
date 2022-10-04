@@ -33,8 +33,14 @@ const CartProvider = ({children}) => {
         setItems([])
     }
 
+    const counter = items.reduce((acc, current) => (acc + current.qty), 0)
+
+    const totalCart = items.reduce((acc, current) => (acc + current.price * current.qty), 0)
+    const total = totalCart.toFixed(2)
+
+
     return (
-        <CartContext.Provider value={{items, increment, decrement, deleteItem, clearCart}}>
+        <CartContext.Provider value={{items, increment, decrement, deleteItem, clearCart, counter, total}}>
             {children}
         </CartContext.Provider>
     )

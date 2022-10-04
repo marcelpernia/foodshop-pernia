@@ -18,7 +18,7 @@ const Item = ({id, title, price, image, stock}) => {
             <AddToCartButton 
                 stock={stock}
                 initial={0}
-                product={{id, title, image, price}}
+                product={{id, title, image, price, stock}}
             />
         </ProductItem>
     );
