@@ -1,6 +1,5 @@
 [
     {
-       "id":1,
        "title":"Organic Lemon",
        "category":1,
        "stock":20,
@@ -9,7 +8,6 @@
        "image":"/img/lemon.jpg"
     },
     {
-       "id":2,
        "title":"Gala Apple",
        "category":1,
        "stock":8,
@@ -18,7 +16,6 @@
        "image":"/img/apple.jpg"
     },
     {
-       "id":3,
        "title":"1800 tequila",
        "category":2,
        "stock":4,
@@ -27,7 +24,6 @@
        "image":"/img/1800-tequila.webp"
     },
     {
-       "id":4,
        "title":"Jack Daniel's",
        "category":2,
        "stock":4,
@@ -36,7 +32,6 @@
        "image":"/img/jack-daniels.png"
     },
     {
-       "id":5,
        "title":"Malibu",
        "category":2,
        "stock":4,
@@ -45,7 +40,6 @@
        "image":"/img/malibu.webp"
     },
     {
-      "id":6,
       "title":"Real Mayo",
       "category":1,
       "stock":10,
@@ -54,7 +48,6 @@
       "image":"/img/mayo.webp"
    },
    {
-      "id":7,
       "title":"Yellow Mustard",
       "category":1,
       "stock":10,
@@ -63,7 +56,6 @@
       "image":"/img/mustard.webp"
    },
    {
-      "id":8,
       "title":"Tomato Ketchup",
       "category":1,
       "stock":10,

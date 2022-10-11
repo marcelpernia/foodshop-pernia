@@ -3,8 +3,7 @@ import { useParams } from 'react-router-dom';
 import Item from '../Item'
 import { ItemGrid } from './style'
 import { Loading } from '../Loading'
-import { collection, getDocs } from "firebase/firestore";
-import { db } from '../../firebase'
+import{ getProducts } from '../../services/getProducts'
 
 const ItemList = () => {
     const [products, setProducts] = useState(null)
@@ -14,24 +13,11 @@ const ItemList = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        const getProducts = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, 'products'));
-                const data = querySnapshot.docs.map(doc => doc = {id: doc.id, ...doc.data()})
-                const productsFiltered = () => {
-                    return id == undefined ? data : data.filter((item) => item.category == id) 
-                }
-                setProducts(productsFiltered)
-            }
-            catch (err) {
-                console.log(err)
-            }
-            finally {
-                setIsLoading(false)
-            }
-        }
-        getProducts()
-
+        
+        getProducts(id).then(items => {
+            setProducts(items)
+            setIsLoading(false)
+        })
     }, [id])
 
     return (
@@ -39,7 +25,7 @@ const ItemList = () => {
             <Loading />
         ) : (
         <ItemGrid>
-            {products?.map(item => (
+            {products.map(item => (
                 <Item 
                     key={item.id}
                     id={item.id}

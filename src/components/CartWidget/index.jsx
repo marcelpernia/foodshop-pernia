@@ -5,10 +5,9 @@ import {useCartContext} from '../../context/CartContext'
 import { Link } from 'react-router-dom'
 
 const CartWidget = () => {
-    const {items, counter} = useCartContext()
-    const length = items.filter(item => item.qty > 0).length
+    const { counter } = useCartContext();
     return (
-        <CartIcon hasItems={length}>
+        <CartIcon hasItems={counter}>
             <Link to="/cart">
                 <ShoppingCartIcon className="icon"/>
                 <div className="counter">{counter}</div>

@@ -5,31 +5,28 @@ export const useCartContext = () => useContext(CartContext)
 
 const CartProvider = ({children}) => {
     const [items, setItems] = useState([])
-
-    const isInCart = (id) => {
-        return items.find(item => item.id === id)
-    }
     
     const increment = (product) => {
-        if(!!isInCart(product.id)) {
-            const item = isInCart(product.id)
-            item.qty++
+        const itemFound = items.find(item => item.id === product.id)
+
+        if(itemFound) {
+            itemFound.qty++
             setItems([...items])
         } else {
-            setItems(prevState => [...prevState, product])
+            setItems([...items, product])
         }
     }
    
     const decrement = (product) => {
-        const item = isInCart(product.id)
-        item.qty--
+        const itemFound = items.find(item => item.id === product.id)
+        itemFound.qty--
         setItems([...items])
-        item.qty === 0 && deleteItem(item.id)
+        itemFound.qty === 0 && deleteItem(itemFound.id)
     }
 
     const deleteItem = (id) => {
-        const item = items.filter(item => item.id !== id)
-        setItems(item)
+        const query = items.filter(item => item.id !== id)
+        setItems(query)
     }
 
     const clearCart = () => {

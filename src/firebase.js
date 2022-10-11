@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, writeBatch, doc, updateDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, doc, updateDoc } from 'firebase/firestore';
+import {products} from './products';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -12,8 +13,6 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 export const db = getFirestore();
-export const batch = writeBatch(db);
-
 
 export const save = async (collectionName, item) => {
   const docRef = await addDoc(collection(db, collectionName), item)
@@ -23,3 +22,11 @@ export const save = async (collectionName, item) => {
 export const update = async (collectionName, id, data) => {
   const docRef = await updateDoc(doc(db, collectionName, id), data)
 }
+
+const uploadProducts = async() => {
+  for(const product of products) {
+    await save('products', product)
+  }
+}
+// uploadProducts()
+

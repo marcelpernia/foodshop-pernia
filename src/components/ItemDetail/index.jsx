@@ -4,45 +4,26 @@ import { Container } from './style'
 import { Back } from './Back'
 import { Product } from './Product'
 import { Loading } from '../Loading'
-import { doc, getDoc } from "firebase/firestore";
-import { db } from '../../firebase'
+import { getProduct } from '../../services/getProduct'
 
 const ItemDetails = () => {
-
     const [item, setItem] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-    const [notFound, setNotFound] = useState(false)
     const {id} = useParams()
 
     useEffect(() => {
-        const getItem = async () => {
-            try {
-                const querySnapshot = await getDoc(doc(db, 'products', id));
-
-                if(querySnapshot.exists()) {
-                    const data = querySnapshot.data()
-                    setItem(data)
-                }
-                else {
-                    setNotFound(true)
-                }
-            }
-            catch(error) {
-                console.log(error)
-            }
-            finally {
-                setIsLoading(false)
-            }
-        }
-        getItem()
+        setIsLoading(true)
+        getProduct(id).then(product => {
+            setItem(product)
+            setIsLoading(false)
+        })
     }, [id])
 
     return (
         <Container>
             <Back />
             {isLoading && <Loading />}
-            {notFound && 'Not found'}
-            {item && (
+            {item ? (
                 <Product
                     id={id} 
                     image={item.image}
@@ -51,6 +32,8 @@ const ItemDetails = () => {
                     stock={item.stock}
                     details={item.details}
                 />
+            ) : (
+                'Item not found'
             )}
         </Container>
     );

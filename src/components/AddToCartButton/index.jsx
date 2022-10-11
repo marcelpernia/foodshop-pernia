@@ -1,33 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { PlusCircleIcon, MinusCircleIcon, TrashIcon} from '@heroicons/react/outline'
 import { AddToCart, Count } from './style'
 import { useCartContext } from '../../context/CartContext'
 
 
-export const AddToCartButton = ({ stock, className, handleQty, product }) => {
+export const AddToCartButton = ({ stock, className, product }) => {
 
     const { items, increment, decrement } = useCartContext()
-
     const [ counter, setCounter ] = useState(0)
 
-    const onAdd = () => {
+    const handleIncrement = () => {
         if (counter < stock) {
             setCounter(counter + 1)
-            handleQty && handleQty(counter + 1)
             increment({...product, qty:counter + 1})
         }
     }
 
-    const onMinus = () => {
+    const handleDecrement = () => {
         setCounter(counter - 1)
-        handleQty && handleQty(counter - 1)
         decrement({...product, qty:counter - 1})
     }
 
+    useEffect(() => {
+        const productInCart = items.find(item => item.id === product.id);
+        productInCart && setCounter(productInCart.qty)
+    }, [])
+
     return (
         <>
-            {counter == 0 ? (
-                <AddToCart className={className} onClick={() => onAdd() }>
+            {counter === 0 ? (
+                <AddToCart className={className} onClick={handleIncrement}>
                     {product.stock !== 0 ? (
                         <>
                             <span>Add to Cart</span>
@@ -39,15 +41,15 @@ export const AddToCartButton = ({ stock, className, handleQty, product }) => {
                 </AddToCart>
             ) : (
                 <Count className={className}>
-                    <button onClick={() => onMinus() }>
-                        {counter == 1 ? (
+                    <button onClick={handleDecrement}>
+                        {counter === 1 ? (
                             <TrashIcon className="icon"/>
                         ) : (
                             <MinusCircleIcon className="icon"/>
                         )}
                     </button>
-                    <span onClick={() => onAdd() }>{counter}</span>
-                    <button onClick={() => onAdd() }>
+                    <span onClick={handleIncrement}>{counter}</span>
+                    <button onClick={handleIncrement}>
                         <PlusCircleIcon className="icon"/>
                     </button>
                 </Count>

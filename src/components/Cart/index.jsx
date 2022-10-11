@@ -26,8 +26,11 @@ const Cart = () => {
                     </div>
                     <div className="column narrow">
                         <OrderSummary />
-                        { orderPlaced && <Form /> }
-                        {!orderPlaced && <button onClick={handleButton} className="button mt-1 fullWidth">Place order</button>}
+                        {orderPlaced ? (
+                            <Form />
+                        ) : (
+                            <button onClick={handleButton} className="button mt-1 fullWidth">Place order</button>
+                        )}
                     </div>
                 </Columns>
             ) : (

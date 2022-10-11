@@ -4,7 +4,7 @@ import { useCartContext } from '../../context/CartContext';
 
 const OrderSummary = () => {
 
-    const { items, counter, total } = useCartContext()
+    const { counter, total } = useCartContext()
 
     return (
         <Summary>

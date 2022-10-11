@@ -90,3 +90,10 @@ export const SeeCartLink = styled.div`
   transform: translateY(-50%);
   right: 260px;
 `;
+
+export const Stock = styled.div`
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: gray;
+`;

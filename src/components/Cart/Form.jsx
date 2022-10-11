@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useCartContext } from "../../context/CartContext";
 import { save, update } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
+import { success } from '../Feedback';
 
 const Form = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { items, total, clearCart } = useCartContext();
 
-  const products = items.map(({ id, title, price }) => {
-    return { id, title, price };
+  const products = items.map(({ id, title, price, qty }) => {
+    return { id, title, price, qty };
   });
 
   const [order, setOrder] = useState({
@@ -31,26 +31,24 @@ const Form = () => {
   };
 
   const handleSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
-
-    
-    const orderId = await save("orders", order);
-
-    for(const item of items) {
-      await update('products', item.id, {stock: item.stock - item.qty})
+    setLoading(true);
+    try {
+      var orderId = await save("orders", order);
+  
+      for(const item of items) {
+        await update('products', item.id, {stock: item.stock - item.qty})
+      }
     }
-
-    setLoading(false);
-
-    Swal.fire(
-      'Order confirmed!',
-      `Order ID: <strong>${orderId}</strong>`,
-      'success'
-    )
-
-    clearCart();
-    navigate('/');
+    catch(error) {
+      console.log(error)
+    }
+    finally {
+      setLoading(false);
+      success('Order confirmed!', `Order ID: <strong>${orderId}</strong>`);
+      clearCart();
+      navigate('/');
+    }
   };
 
   return (

@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { ProductItem, Image, Title, Price, Stock } from './style'
 import {AddToCartButton} from '../AddToCartButton';
-import {useCartContext} from '../../context/CartContext'
+import { useCartContext } from "../../context/CartContext";
 
-const Item = ({id, title, price, image, stock}) => {
+const Item = ({id, title, price, image, stock}) => {   
     return (
         <ProductItem>
             <Image>
@@ -17,7 +17,6 @@ const Item = ({id, title, price, image, stock}) => {
             <Price>${price}</Price>
             <AddToCartButton 
                 stock={stock}
-                initial={0}
                 product={{id, title, image, price, stock}}
             />
         </ProductItem>
